@@ -1,5 +1,6 @@
 package ru.matveyakulov.github.data_api.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +17,11 @@ import ru.matveyakulov.github.data_api.service.OrderService;
 
 import java.util.List;
 
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
     private OrderRepository orderRepository;
-
-    @Autowired
     private ClientRepository clientRepository;
 
     @Transactional(readOnly = true)

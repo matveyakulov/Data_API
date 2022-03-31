@@ -1,5 +1,6 @@
 package ru.matveyakulov.github.data_api.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,13 +20,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -47,7 +46,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Transactional(readOnly = true)
     @Override
     public UserDTO findByEmailAndPassword(String email, String password) {
         User user = userRepository.findByEmailAndPassword(email, password)
@@ -72,7 +70,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(value);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<UserDTO> findAll() {
         return UserMapper.USER.listUserToListUserDTO(userRepository.findAll());

@@ -1,5 +1,6 @@
 package ru.matveyakulov.github.data_api.service.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.matveyakulov.github.data_api.advice.exception.TableDataCorrectException;
@@ -10,20 +11,13 @@ import ru.matveyakulov.github.data_api.service.OrderService;
 import ru.matveyakulov.github.data_api.service.UpdateService;
 import ru.matveyakulov.github.data_api.service.UserService;
 
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Service
 public class UpdateServiceImpl implements UpdateService {
 
-    @Autowired
     private UserService userService;
-
-    @Autowired
     private ClientService clientService;
-
-    @Autowired
     private OrderService orderService;
-
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
 
     @Override
     public void update(UpdateTableDataDTO updateTableDataDTO) {

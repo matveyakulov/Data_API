@@ -25,7 +25,7 @@ public class Client {
     private Long id;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client_id", cascade = {CascadeType.MERGE, CascadeType.PERSIST,
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client_id", cascade = {CascadeType.MERGE, CascadeType.PERSIST,
             CascadeType.DETACH, CascadeType.REFRESH})
     private Set<Order> orders = new HashSet<>();
 
